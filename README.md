@@ -1,149 +1,78 @@
-# PUPPET-MOCK
+# PuppetSidecar [![NPM](https://github.com/wechaty/wechaty-puppet-sidecar/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-puppet-sidecar/actions?query=workflow%3ANPM)
 
 [![NPM Version](https://badge.fury.io/js/wechaty-puppet-sidecar.svg)](https://badge.fury.io/js/wechaty-puppet-sidecar)
 [![npm (tag)](https://img.shields.io/npm/v/wechaty-puppet-sidecar/next.svg)](https://www.npmjs.com/package/wechaty-puppet-sidecar?activeTab=versions)
-[![NPM](https://github.com/wechaty/wechaty-puppet-sidecar/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-puppet-sidecar/actions?query=workflow%3ANPM)
 
-![chatie puppet](https://wechaty.github.io/wechaty-puppet-sidecar/images/mock.png)
+![chatie puppet](docs/images/puppet-sidecar.webp)
 
 > Picture Credit: <https://softwareautotools.com/2017/03/01/mocking-explained-in-python/>
 
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://github.com/wechaty/wechaty)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 
-Puppet Mocker & Starter Template for Wechaty, it is very useful when you:
+Universal Puppet powered by Sidecar, which can help Wechaty connect to any applications.
 
-1. Want to test the Wechaty framework with a mock puppet, or
-1. You want to write your own Puppet implenmentation.
+## Usage
 
-Then `PuppetSidecar` will helps you a lot.
+Talk is cheap, show me the code.
 
-## USAGE
-
-### Puppet Mock
+### Puppet Sidecar
 
 ```ts
 import { Wechaty }   from 'wechaty'
 import { PuppetSidecar } from 'wechaty-puppet-sidecar'
+import { 
+  Sidecar,
+  SidecarBody,
+  Call,
+  Ret,
+  RetType
+  ParamType,
+  Hook,
+}               from 'frida-sidecar'
 
-const puppet  = new PuppetSidecar()
+@Sidecar('WeChat.exe')
+class WeChatSidecar extends SidecarBody {
+
+  @Call(0x1234)
+  @RetType('pointer', 'Utf8String')
+  messageSendText (
+    @ParamType('pointer', 'Utf8String') id: string,
+    @ParamType('pointer', 'Utf8String') text: string,
+  ) { return Ret(id, text) }
+
+  @Hook(0x5678)
+  messageLoop (
+    @ParamType('pointer', 'Buffer') protoBuf: Buffer,
+  ) { return Ret(protoBuf) }
+
+}
+
+const sidecar = new WeChatSidecar()
+const puppet  = new PuppetSidecar({ sidecar })
 const wechaty = new Wechaty({ puppet })
 
 wechaty.start()
 ```
 
-### Mocker & Environment
-
-```ts
-import {
-  PuppetSidecar,
-  Mocker,
-  SimpleEnvironment,
-}                     from 'wechaty-puppet-sidecar'
-
-const mocker = new Mocker()
-mocker.use(SimpleEnvironment())
-
-const puppet = new PuppetSidecar({ mocker })
-const wechaty = new Wechaty({ puppet })
-
-wechaty.start()
-
-// The Mocker will start perform the SimpleEnvironment...
-```
-
-See: [SimpleEnvironment](src/mocker/environment.ts)
-
-## API Reference
-
-### Mocker
-
-```ts
-import { Wechaty }  from 'wechaty'
-import { PuppetSidecar, mock }   from 'wechaty-puppet-sidecar'
-
-const mocker = new mock.Mocker()
-const puppet = new PuppetSidecar({ mocker })
-const bot = new Wechaty({ puppet })
-
-await bot.start()
-
-mocker.scan('https://github.com/wechaty', 1)
-
-const user = mocker.createContact()
-mocker.login(user)
-
-const contact = mocker.createContact()
-const room = mocker.createRoom()
-
-user.say('Hello').to(contact)
-contact.say('World').to(user)
-```
-
-## HELPER UTILITIES
-
-### StateSwitch
-
-```ts
-this.state.on('pending')
-this.state.on(true)
-this.state.off('pending')
-this.state.off(true)
-
-await this.state.ready('on')
-await this.state.ready('off')
-
-```
-
-### Watchdog
-
-```ts
-```
-
-### MemoryCard
-
-```ts
-await memory.set('config', { id: 1, key: 'xxx' })
-const config = await memory.get('config')
-console.log(config)
-// Output: { id: 1, key: 'xxx' }
-```
-
-## HISTORY
+## History
 
 ### master
 
-### v0.25 (July 13, 2020)
-
-1. Rename `MockXXX` to `XXXMock` for keep the consistent naming style with `PuppetSidecar`.
-1. Export `mock` namespace and move all related modules under it.
-
-### v0.22 (June 4, 2020)
-
-`Mocker` Released. `Mocker` is a manager for controlling the behavior of the Puppet activities.
-
-1. Add `MockContact`, `MockRoom`, and `MockMessage` for `Mockers`
-1. Add `MockEnvironment` for mocking the server behaviors.
-1. Support `Wechaty#Contact.find()` from the `mocker.createContacts()`
-1. Support `Wechaty#Room.find()` from the `mocker.createRooms()`
-1. Support `message` event for `talker`, `listener`, and `room` of `MockMessage`
-
-### v0.0.1 (Jun 27, 2018)
+### v0.0.1 (Jun 4, 2021)
 
 Initial version.
 
-`PuppetSidecar` is a skelton Puppet without do anything, it will make testing easy when developing Wechaty
+## Author
 
-## AUTHOR
-
-[Huan LI](http://linkedin.com/in/zixia) \<zixia@zixia.net\>
+[Huan LI](http://linkedin.com/in/zixia) [Microsoft Regional Director](https://rd.microsoft.com/en-us/huan-li) \<zixia@zixia.net\>
 
 <a href="https://stackexchange.com/users/265499">
   <img src="https://stackexchange.com/users/flair/265499.png" width="208" height="58" alt="profile for zixia on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for zixia on Stack Exchange, a network of free, community-driven Q&amp;A sites">
 </a>
 
-## COPYRIGHT & LICENSE
+## Copyright & License
 
-* Code & Docs © 2018 Huan LI \<zixia@zixia.net\>
+* Code & Docs © 2021 Huan LI \<zixia@zixia.net\>
 * Code released under the Apache-2.0 License
 * Docs released under Creative Commons
