@@ -1,10 +1,10 @@
 # PUPPET-MOCK
 
-[![NPM Version](https://badge.fury.io/js/wechaty-puppet-mock.svg)](https://badge.fury.io/js/wechaty-puppet-mock)
-[![npm (tag)](https://img.shields.io/npm/v/wechaty-puppet-mock/next.svg)](https://www.npmjs.com/package/wechaty-puppet-mock?activeTab=versions)
-[![NPM](https://github.com/wechaty/wechaty-puppet-mock/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-puppet-mock/actions?query=workflow%3ANPM)
+[![NPM Version](https://badge.fury.io/js/wechaty-puppet-sidecar.svg)](https://badge.fury.io/js/wechaty-puppet-sidecar)
+[![npm (tag)](https://img.shields.io/npm/v/wechaty-puppet-sidecar/next.svg)](https://www.npmjs.com/package/wechaty-puppet-sidecar?activeTab=versions)
+[![NPM](https://github.com/wechaty/wechaty-puppet-sidecar/workflows/NPM/badge.svg)](https://github.com/wechaty/wechaty-puppet-sidecar/actions?query=workflow%3ANPM)
 
-![chatie puppet](https://wechaty.github.io/wechaty-puppet-mock/images/mock.png)
+![chatie puppet](https://wechaty.github.io/wechaty-puppet-sidecar/images/mock.png)
 
 > Picture Credit: <https://softwareautotools.com/2017/03/01/mocking-explained-in-python/>
 
@@ -16,7 +16,7 @@ Puppet Mocker & Starter Template for Wechaty, it is very useful when you:
 1. Want to test the Wechaty framework with a mock puppet, or
 1. You want to write your own Puppet implenmentation.
 
-Then `PuppetMock` will helps you a lot.
+Then `PuppetSidecar` will helps you a lot.
 
 ## USAGE
 
@@ -24,9 +24,9 @@ Then `PuppetMock` will helps you a lot.
 
 ```ts
 import { Wechaty }   from 'wechaty'
-import { PuppetMock } from 'wechaty-puppet-mock'
+import { PuppetSidecar } from 'wechaty-puppet-sidecar'
 
-const puppet  = new PuppetMock()
+const puppet  = new PuppetSidecar()
 const wechaty = new Wechaty({ puppet })
 
 wechaty.start()
@@ -36,15 +36,15 @@ wechaty.start()
 
 ```ts
 import {
-  PuppetMock,
+  PuppetSidecar,
   Mocker,
   SimpleEnvironment,
-}                     from 'wechaty-puppet-mock'
+}                     from 'wechaty-puppet-sidecar'
 
 const mocker = new Mocker()
 mocker.use(SimpleEnvironment())
 
-const puppet = new PuppetMock({ mocker })
+const puppet = new PuppetSidecar({ mocker })
 const wechaty = new Wechaty({ puppet })
 
 wechaty.start()
@@ -60,10 +60,10 @@ See: [SimpleEnvironment](src/mocker/environment.ts)
 
 ```ts
 import { Wechaty }  from 'wechaty'
-import { PuppetMock, mock }   from 'wechaty-puppet-mock'
+import { PuppetSidecar, mock }   from 'wechaty-puppet-sidecar'
 
 const mocker = new mock.Mocker()
-const puppet = new PuppetMock({ mocker })
+const puppet = new PuppetSidecar({ mocker })
 const bot = new Wechaty({ puppet })
 
 await bot.start()
@@ -115,7 +115,7 @@ console.log(config)
 
 ### v0.25 (July 13, 2020)
 
-1. Rename `MockXXX` to `XXXMock` for keep the consistent naming style with `PuppetMock`.
+1. Rename `MockXXX` to `XXXMock` for keep the consistent naming style with `PuppetSidecar`.
 1. Export `mock` namespace and move all related modules under it.
 
 ### v0.22 (June 4, 2020)
@@ -132,7 +132,7 @@ console.log(config)
 
 Initial version.
 
-`PuppetMock` is a skelton Puppet without do anything, it will make testing easy when developing Wechaty
+`PuppetSidecar` is a skelton Puppet without do anything, it will make testing easy when developing Wechaty
 
 ## AUTHOR
 

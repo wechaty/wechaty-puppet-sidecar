@@ -24,6 +24,7 @@ npm install ./*-*.*.*.tgz \
   \
   "wechaty-puppet@$NPM_TAG" \
   "wechaty@$NPM_TAG" \
+  frida-sidecar \
 
 ./node_modules/.bin/tsc \
   --esModuleInterop \

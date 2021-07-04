@@ -16,6 +16,7 @@
  *   limitations under the License.
  *
  */
+import { Sidecar, SidecarBody } from 'frida-sidecar'
 import {
   EventLogoutPayload,
   EventLoginPayload,
@@ -24,19 +25,20 @@ import {
   EventMessagePayload,
 }                         from 'wechaty-puppet'
 import {
-  PuppetMock,
-  mock,
+  PuppetSidecar,
 }               from '../src/mod'
 
-const mocker = new mock.Mocker()
-mocker.use(mock.SimpleEnvironment())
+@Sidecar('test')
+class DummySidecar extends SidecarBody {}
+
+const sidecar = new DummySidecar()
 
 /**
  *
  * 1. Declare your Bot!
  *
  */
-const puppet = new PuppetMock({ mocker })
+const puppet = new PuppetSidecar({ sidecar })
 
 /**
  *
