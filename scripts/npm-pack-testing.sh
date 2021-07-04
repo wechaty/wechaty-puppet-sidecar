@@ -33,6 +33,8 @@ npm install ./*-*.*.*.tgz \
   --noEmitOnError \
   --noImplicitAny \
   --target es6 \
+  --experimentalDecorators \
+  --emitDecoratorMetadata \
   --module commonjs \
   smoke-testing.ts
 
