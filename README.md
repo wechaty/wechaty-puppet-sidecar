@@ -2,13 +2,12 @@
 
 [![NPM Version](https://badge.fury.io/js/wechaty-puppet-sidecar.svg)](https://badge.fury.io/js/wechaty-puppet-sidecar)
 [![npm (tag)](https://img.shields.io/npm/v/wechaty-puppet-sidecar/next.svg)](https://www.npmjs.com/package/wechaty-puppet-sidecar?activeTab=versions)
-
-![chatie puppet](docs/images/puppet-sidecar.webp)
-
-> Picture Credit: <https://softwareautotools.com/2017/03/01/mocking-explained-in-python/>
-
 [![Powered by Wechaty](https://img.shields.io/badge/Powered%20By-Wechaty-brightgreen.svg)](https://github.com/wechaty/wechaty)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://www.typescriptlang.org/)
+
+![Sidecar Wechaty Puppet](docs/images/puppet-sidecar.webp)
+
+> Image source: [1920s Raleigh Box Sidecar Outfit](https://oldbike.wordpress.com/1920s-raleigh-box-sidecar-outfit/) & [ShellterProject](https://www.shellterproject.com/)
 
 Universal Puppet powered by Sidecar, which can help Wechaty connect to any applications.
 
