@@ -64,7 +64,7 @@ Initial version.
 
 ## Author
 
-[Huan LI](http://linkedin.com/in/zixia) [Microsoft Regional Director](https://rd.microsoft.com/en-us/huan-li) \<zixia@zixia.net\>
+[Huan LI](http://linkedin.com/in/zixia), [Microsoft Regional Director](https://rd.microsoft.com/en-us/huan-li) \<zixia@zixia.net\>
 
 <a href="https://stackexchange.com/users/265499">
   <img src="https://stackexchange.com/users/flair/265499.png" width="208" height="58" alt="profile for zixia on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for zixia on Stack Exchange, a network of free, community-driven Q&amp;A sites">
