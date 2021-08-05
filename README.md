@@ -11,6 +11,12 @@
 
 Universal Puppet powered by Sidecar, which can help Wechaty connect to any applications.
 
+## Motivation
+
+UNDER CONSTRUCTION
+
+To universal RPA everything by the power of sidecar.
+
 ## Usage
 
 Talk is cheap, show me the code.
